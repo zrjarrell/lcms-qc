@@ -1,0 +1,131 @@
+{
+    "msconvert_path": "C:/Program Files/ProteoWizard/ProteoWizard 3.0.21251.b9cd7e65/msconvert.exe",
+    "num_replicates": 3,
+    "mzxml_sampling_num": 20,
+    "mass_error_ppm": 5,
+    "rt_error_seconds": 30, 
+    "hilicpos_targets": [
+        {
+            "name": "[trimethyl-13C3]-caffeine",
+            "mz": 198.0977,
+            "time": 31,
+            "type": "istd"
+        },
+        {
+            "name": "[3,3-13C2]-cystine",
+            "mz": 243.0378,
+            "time": 194,
+            "type": "istd"
+        },
+        {
+            "name": "[13C6]-D-glucose",
+            "mz": 209.0727,
+            "time": 42,
+            "type": "istd"
+        },
+        {
+            "name": "[15N,13C5]-L-methionine",
+            "mz": 156.0721,
+            "time": 50,
+            "type": "istd"
+        },
+        {
+            "name": "[15N]-L-tyrosine",
+            "mz": 183.0782,
+            "time": 52,
+            "type": "istd"
+        },
+        {
+            "name": "Phenylalanine",
+            "mz": 166.0863,
+            "time": 42,
+            "type": "metabolite"
+        },
+        {
+            "name": "Cotinine",
+            "mz": 177.1022,
+            "time": 34,
+            "type": "metabolite"
+        },
+        {
+            "name": "Carnitine",
+            "mz": 162.1125,
+            "time": 50,
+            "type": "metabolite"
+        },
+        {
+            "name": "Palmitoylcarnitine",
+            "mz": 400.3421,
+            "time": 24.6,
+            "type": "metabolite"
+        },
+        {
+            "name": "Sphingosine 1-phosphate",
+            "mz": 380.2551,
+            "time": 32,
+            "type": "metabolite"
+        }
+    ],
+    "c18neg_targets": [
+        {
+            "name": "[U-13C5, U-15N2]-L-glutamine",
+            "mz": 152.0727,
+            "time": 21,
+            "type": "istd"
+        },
+        {
+            "name": "[3,3-13C2]-cystine",
+            "mz": 241.0232,
+            "time": 20,
+            "type": "istd"
+        },
+        {
+            "name": "[13C6]-D-glucose",
+            "mz": 185.0762,
+            "time": 24,
+            "type": "istd"
+        },
+        {
+            "name": "[15N,13C5]-L-methionine",
+            "mz": 154.0576,
+            "time": 24,
+            "type": "istd"
+        },
+        {
+            "name": "[15N]-L-tyrosine",
+            "mz": 181.0636,
+            "time": 24,
+            "type": "istd"
+        },
+        {
+            "name": "Linoleic acid",
+            "mz": 279.2330,
+            "time": 244,
+            "type": "metabolite"
+        },
+        {
+            "name": "Palmitic acid",
+            "mz": 255.2329,
+            "time": 263,
+            "type": "metabolite"
+        },
+        {
+            "name": "Lactate",
+            "mz": 89.0244,
+            "time": 23,
+            "type": "metabolite"
+        },
+        {
+            "name": "Progesterone",
+            "mz": 311.2011,
+            "time": 25,
+            "type": "metabolite"
+        },
+        {
+            "name": "Uric acid",
+            "mz": 167.0211,
+            "time": 19,
+            "type": "metabolite"
+        }
+    ]
+}

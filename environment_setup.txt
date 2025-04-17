@@ -1,0 +1,15 @@
+conda activate explorisQC
+
+#setup env with default python (v3.10.16)
+#installed R v4.4.3
+conda install -c conda-forge r-base=4.4.3
+
+    #in R 
+    if (!require("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+
+    BiocManager::install("xcms")
+
+
+pip install pandas
+
