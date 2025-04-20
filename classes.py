@@ -6,6 +6,7 @@ from mzxml_manipulation import get_scan_stats as get_ss
 from raw_manipulation import get_runtimes as get_times
 from feature_matching import find_targets
 from replicate_inspection import check_replicability
+from build_eics import build_eics
 
 class QCResult:
     def __init__(self, method, ft_path, mzxml_dir, raw_dir):
@@ -82,3 +83,6 @@ class QCResult:
     
     def get_replicability(self):
         self.replicability = check_replicability(self)
+
+    def get_eics(self):
+        build_eics(self)

@@ -24,6 +24,7 @@ def check_file_sequence(filename):
 
 def convert_mzxmls(dirpath):
     rawfiles = find_raws(dirpath)
+    prev_dir = os.getcwd()
     os.chdir(dirpath)
     mkdir_if_not(dirpath + "/qc/mzxml")
     error_files = []
@@ -35,6 +36,7 @@ def convert_mzxmls(dirpath):
             mkdir_if_not(f"{dirpath}/qc/mzxml/{method}")
             command = f'{config["msconvert_path"]} {file} -o ./qc/mzxml/{method} --64 --zlib --mzXML --filter "peakPicking true 1-"'
             subprocess.run(command)
+    os.chdir(prev_dir)
     return error_files
 
 def get_runtimes(qc):
