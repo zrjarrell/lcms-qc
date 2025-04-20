@@ -41,9 +41,9 @@ def convert_mzxmls(dirpath):
 
 def get_runtimes(qc):
     timestamps = {}
-    rawfiles = find_raws(qc.raw_dir)
+    rawfiles = find_raws(qc.study_dir)
     for i in range(0, len(rawfiles)):
-        rawfiles[i] = qc.raw_dir + "/" + rawfiles[i]
+        rawfiles[i] = qc.study_dir + "/" + rawfiles[i]
     timestamps["start_file"] = min(rawfiles, key=os.path.getmtime)
     timestamps["end_file"] = max(rawfiles, key=os.path.getmtime)
     timestamps["start_time"] = time.ctime(os.path.getmtime(timestamps["start_file"]))

@@ -13,3 +13,4 @@ conda install -c conda-forge r-base=4.4.3
 
 pip install pandas
 
+pip install reportlab

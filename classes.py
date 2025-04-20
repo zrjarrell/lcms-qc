@@ -9,11 +9,11 @@ from replicate_inspection import check_replicability
 from build_eics import build_eics
 
 class QCResult:
-    def __init__(self, method, ft_path, mzxml_dir, raw_dir):
+    def __init__(self, method, study_dir, ft_path, mzxml_dir):
         self.method = method
+        self.study_dir = study_dir
         self.ft_path = ft_path
         self.mzxml_dir = mzxml_dir
-        self.raw_dir = raw_dir
     
     def print_stats(self):
         for attr in self.__dict__:
