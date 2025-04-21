@@ -6,8 +6,7 @@ from copy import deepcopy
 
 config = json.load(open("config.json"))
 
-def separate_replicates(qc, analyses = None):
-    num_reps = config["num_replicates"]
+def separate_replicates(qc, num_reps, analyses = None):
     if analyses == None:
         analyses = qc.ft.columns[8:].to_list()
     if len(analyses) % num_reps != 0:
@@ -26,7 +25,7 @@ def impute_missing(df):
     nz_means = df.mean(axis=1)
     for col in df.columns:
         df[col] = df[col].fillna(nz_means)
-    return df   
+    return df
 
 #get mean median technical replicate CV
 def evaluate_replicate_cv(ft, replicates, min_pres = 0.6):
@@ -76,7 +75,15 @@ def evaluate_replicate_correlation(ft, replicates):
 
 def check_replicability(qc, analyses = None):
     replicate_stats = {}
-    replicates = separate_replicates(qc, analyses)
-    replicate_stats["feature-wise"] = evaluate_replicate_cv(qc.ft, replicates)
-    replicate_stats["sample-wise"] = evaluate_replicate_correlation(qc.ft, replicates)
-    return replicate_stats
+    num_reps = config["num_replicates"]
+    if num_reps == 1:
+        return {
+            "feature-wise": {"min_median_cv": None, "median_median_cv": None, "mean_median_cv": None, "max_median_cv": None,
+                             "min_median_qrscore": None, "median_median_qrscore": None, "mean_median_qrscore": None, "max_median_qrscore": None},
+            "sample-wise": {"min_mean_correlation": None, "median_mean_correlation": None, "mean_mean_correlation": None, "max_mean_correlation": None}
+        }
+    else:
+        replicates = separate_replicates(qc, num_reps, analyses)
+        replicate_stats["feature-wise"] = evaluate_replicate_cv(qc.ft, replicates)
+        replicate_stats["sample-wise"] = evaluate_replicate_correlation(qc.ft, replicates)
+        return replicate_stats

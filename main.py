@@ -2,16 +2,17 @@ import json, os, subprocess
 
 from utilities import mkdir_if_not
 from raw_manipulation import convert_mzxmls
+from pdf_report import write_report, merge_reports
 
 from classes import QCResult
 
 DEBUG = True
 config = json.load(open("config.json"))
 
-study_directory = "C:/Users/zjarrel/repos/lcms-qc/test-raws"
+study_directory = "C:/Users/zjarrel/repos/lcms-qc/test-raws" #provide absolute path
 
 #setup qc dir and 
-mkdir_if_not(study_directory + "/qc")
+""" mkdir_if_not(study_directory + "/qc")
 #converts raw to mzxml, separates mzxmls by method
 error_files = convert_mzxmls(study_directory)
 
@@ -28,7 +29,7 @@ for method in methods:
             subprocess.run(command)
         QCs += [QCResult(method, study_directory, subset_path + "/featuretable.csv", subset_path)]
 
-
+ """
 
 
 methods = ["hilicpos", "c18neg"]
@@ -47,10 +48,7 @@ for qc in QCs:
     qc.get_targets()
     qc.get_meanmedianint()
     qc.get_replicability()
+    #qc.get_eics()
+    write_report(qc)
+    merge_reports(qc)
 
-qc = QCs[0]
-
-qc.get_eics()
-
-
-#get EICs of target matches

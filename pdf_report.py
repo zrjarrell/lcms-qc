@@ -64,6 +64,14 @@ def make_target_page(pdf, qc, img_pair):
     pdf.drawInlineImage(qc.mzxml_dir + "/" + img_pair[1], 150, 100, width=300,height=300)
     pdf.showPage()
 
+def none_round(num, decimals=0):
+    if num == None:
+        return num
+    elif decimals == 0:
+        return round(num)
+    else:
+        return round(num, decimals)
+
 def write_report(qc):
     title = f"{qc.study_dir} {qc.method}"
     pdf = canvas.Canvas(qc.mzxml_dir + "/qc_report.pdf")
@@ -83,28 +91,28 @@ def write_report(qc):
         ["", ""],
         ["Mass Spec:", qc.machine_info["msModel"]],
         ["Minimum scans:", qc.scan_stats["min"]],
-        ["Mean scans:", round(qc.scan_stats["mean"])],
+        ["Mean scans:", none_round(qc.scan_stats["mean"])],
         ["Maximum scans:", qc.scan_stats["max"]],
         ["Number of peaks:", qc.peaks["num"]],
-        ["Number nonzero peaks::", qc.peaks["nonzero"]],
+        ["Number nonzero peaks:", qc.peaks["nonzero"]],
         ["Number peaks in 90% samples:", qc.peaks["present90per"]],
         ["Number peaks in 50% samples:", qc.peaks["present50per"]],
-        ["Mean median intensity:", round(qc.mean_median_intensity)],
+        ["Mean median intensity:", none_round(qc.mean_median_intensity)],
         ["",""],
         ["Sample Replicability","", set_args(bold=True)],
         [
             "Minimum mean pairwise Pearson R:",
-            round(qc.replicability["sample-wise"]["min_mean_correlation"], 3),
+            none_round(qc.replicability["sample-wise"]["min_mean_correlation"], 3),
             set_args(measure=qc.replicability["sample-wise"]["min_mean_correlation"], threshold=mean_corr_thresh, bar=True)
         ],
         [
             "Median mean pairwise Pearson R:",
-            round(qc.replicability["sample-wise"]["median_mean_correlation"], 3),
+            none_round(qc.replicability["sample-wise"]["median_mean_correlation"], 3),
             set_args(measure=qc.replicability["sample-wise"]["median_mean_correlation"], threshold=mean_corr_thresh, bar=True)
         ],
         [
             "Maximum mean pairwise Pearson R:",
-            round(qc.replicability["sample-wise"]["max_mean_correlation"], 3),    
+            none_round(qc.replicability["sample-wise"]["max_mean_correlation"], 3),    
             set_args(measure=qc.replicability["sample-wise"]["max_mean_correlation"], threshold=mean_corr_thresh, bar=True),
         ]
     ]
@@ -115,44 +123,44 @@ def write_report(qc):
         ["Duplicated matches:", qc.target_stats["duplicate_matches"]],
         [
             "Median mass error (ppm):",
-            round(qc.target_stats["median_mass_error"], 2),
+            none_round(qc.target_stats["median_mass_error"], 2),
             set_args(measure=qc.target_stats["median_mass_error"], threshold=mass_error_thresh)
         ],
         [
             "Maximum mass error (ppm):",
-            round(qc.target_stats["max_mass_error"], 2),
+            none_round(qc.target_stats["max_mass_error"], 2),
             set_args(measure=qc.target_stats["max_mass_error"], threshold=mass_error_thresh)
         ],
         [
             "Median RT error (s):",
-            round(qc.target_stats["median_rt_error"]),
+            none_round(qc.target_stats["median_rt_error"]),
             set_args(measure=qc.target_stats["median_rt_error"], threshold=rt_error_thresh)
         ],
         [
             "Maximum RT error (s):",
-            round(qc.target_stats["max_rt_error"]),
+            none_round(qc.target_stats["max_rt_error"]),
             set_args(measure=qc.target_stats["max_rt_error"], threshold=rt_error_thresh)
         ],
         ["",""],
         ["Feature Replicability","", set_args(bold=True)],
         [
-            "Minimum median CV (%):",
-            round(qc.replicability["feature-wise"]["min_median_cv"], 2) * 100,
+            "Minimum median CV:",
+            none_round(qc.replicability["feature-wise"]["min_median_cv"], 2),
             set_args(measure=qc.replicability["feature-wise"]["min_median_cv"], threshold=med_cv_thresh)
         ],
         [
-            "Median median CV (%):",
-            round(qc.replicability["feature-wise"]["median_median_cv"], 2) * 100,
+            "Median median CV:",
+            none_round(qc.replicability["feature-wise"]["median_median_cv"], 2),
             set_args(measure=qc.replicability["feature-wise"]["median_median_cv"], threshold=med_cv_thresh)
         ],
         [
-            "Maximum median CV (%):",
-            round(qc.replicability["feature-wise"]["max_median_cv"], 2) * 100,
+            "Maximum median CV:",
+            none_round(qc.replicability["feature-wise"]["max_median_cv"], 2),
             set_args(measure=qc.replicability["feature-wise"]["max_median_cv"], threshold=med_cv_thresh)
         ],
-        ["Minimum median QRscore:", round(qc.replicability["feature-wise"]["min_median_qrscore"], 2)],
-        ["Median median QRscore:", round(qc.replicability["feature-wise"]["median_median_qrscore"], 2)],
-        ["Maximum median QRscore:", round(qc.replicability["feature-wise"]["max_median_qrscore"], 2)]
+        ["Minimum median QRscore:", none_round(qc.replicability["feature-wise"]["min_median_qrscore"], 2)],
+        ["Median median QRscore:", none_round(qc.replicability["feature-wise"]["median_median_qrscore"], 2)],
+        ["Maximum median QRscore:", none_round(qc.replicability["feature-wise"]["max_median_qrscore"], 2)]
     ]
     write_column(pdf, col1, 50, start_y)
     write_column(pdf, col2, 320, start_y)
