@@ -2,8 +2,10 @@
     "msconvert_path": "C:/Program Files/ProteoWizard/ProteoWizard 3.0.21251.b9cd7e65/msconvert.exe",
     "num_replicates": 3,
     "mzxml_sampling_num": 20,
-    "mass_error_ppm": 5,
-    "rt_error_seconds": 30, 
+    "target_matching": {
+        "mass_error_ppm": 5,
+        "rt_error_seconds": 30
+    },    
     "hilicpos_targets": [
         {
             "name": "[trimethyl-13C3]-caffeine",
@@ -127,5 +129,11 @@
             "time": 19,
             "type": "metabolite"
         }
-    ]
+    ],
+    "qc_thresholds": {
+        "mass_error_thresh": 5,
+        "rt_error_thresh": 30,
+        "med_cv_thresh": 0.3,
+        "mean_corr_thresh": 0.7
+    }
 }

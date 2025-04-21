@@ -4,7 +4,7 @@ from statistics import median, mean
 from mzxml_manipulation import get_machine_info as get_mi
 from mzxml_manipulation import get_scan_stats as get_ss
 from raw_manipulation import get_runtimes as get_times
-from feature_matching import find_targets
+from target_matching import find_targets
 from replicate_inspection import check_replicability
 from build_eics import build_eics
 
@@ -75,9 +75,11 @@ class QCResult:
         self.target_stats["num_matches"] = len(observed_matches)
         self.target_stats["duplicate_matches"] = self.target_stats["num_matches"] - self.target_stats["targets_matched"]
         self.target_stats["min_mass_error"] = min(observed_matches["mass.error"])
+        self.target_stats["median_mass_error"] = median(observed_matches["mass.error"])
         self.target_stats["mean_mass_error"] = mean(observed_matches["mass.error"])
         self.target_stats["max_mass_error"] = max(observed_matches["mass.error"])
         self.target_stats["min_rt_error"] = min(observed_matches["time.error"])
+        self.target_stats["median_rt_error"] = median(observed_matches["time.error"])
         self.target_stats["mean_rt_error"] = mean(observed_matches["time.error"])
         self.target_stats["max_rt_error"] = max(observed_matches["time.error"])
     

@@ -7,10 +7,10 @@ config = json.load(open("config.json"))
 
 def match_feature(ft, target_dict):
     no_result = False
-    mzmin = target_dict["mz"] - (config["mass_error_ppm"] * target_dict["mz"] / 1e6)
-    mzmax = target_dict["mz"] + (config["mass_error_ppm"] * target_dict["mz"] / 1e6)
-    rtmin = target_dict["time"] - config["rt_error_seconds"]
-    rtmax = target_dict["time"] + config["rt_error_seconds"]
+    mzmin = target_dict["mz"] - (config["target_matching"]["mass_error_ppm"] * target_dict["mz"] / 1e6)
+    mzmax = target_dict["mz"] + (config["target_matching"]["mass_error_ppm"] * target_dict["mz"] / 1e6)
+    rtmin = target_dict["time"] - config["target_matching"]["rt_error_seconds"]
+    rtmax = target_dict["time"] + config["target_matching"]["rt_error_seconds"]
     result = deepcopy(ft[(ft["mz"] > mzmin) & (ft["mz"] < mzmax) & (ft["rt"] > rtmin) & (ft["rt"] < rtmax)])
     if len(result) == 0:
         na_row = {}
