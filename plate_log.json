@@ -1,0 +1,15 @@
+{
+    "active_directory": "",
+    "new_directories": [
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder (2)",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder (3)"
+    ],
+    "directories_analyzed": [
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\.git",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\Chunyus-script_release0.6.3",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\example_collins-qc",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\test-raws",
+        "C:\\Users\\zjarrel\\repos\\lcms-qc\\__pycache__"
+    ]
+}
