@@ -12,9 +12,9 @@ config = json.load(open("config.json"))
 study_directory = "C:/Users/zjarrel/repos/lcms-qc/test-raws" #provide absolute path
 
 #setup qc dir and 
-""" mkdir_if_not(study_directory + "/qc")
+mkdir_if_not(study_directory + "/qc")
 #converts raw to mzxml, separates mzxmls by method
-error_files = convert_mzxmls(study_directory)
+convert_mzxmls(study_directory)
 
 #perform xcms extraction method-wise
 methods = ["hilicpos", "c18neg"]
@@ -29,7 +29,7 @@ for method in methods:
             subprocess.run(command)
         QCs += [QCResult(method, study_directory, subset_path + "/featuretable.csv", subset_path)]
 
- """
+
 
 
 methods = ["hilicpos", "c18neg"]

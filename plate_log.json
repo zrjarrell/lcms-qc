@@ -1,9 +1,8 @@
 {
+    "raw_queue": [],
     "active_directory": "",
     "new_directories": [
-        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder",
-        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder (2)",
-        "C:\\Users\\zjarrel\\repos\\lcms-qc\\New folder (3)"
+        ""
     ],
     "directories_analyzed": [
         "C:\\Users\\zjarrel\\repos\\lcms-qc\\.git",

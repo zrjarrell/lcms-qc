@@ -4,12 +4,12 @@ from utilities import mkdir_if_not
 config = json.load(open("config.json"))
 
 def find_raws(dirpath):
-    dirFiles = os.listdir(dirpath)
     rawfiles = []
-    for file in dirFiles:
-        name, ext = os.path.splitext(file)
-        if ext == '.raw':
-           rawfiles += [file]
+    for dirpath, _, filenames in os.walk(dirpath):
+        for file in filenames:
+            name, ext = os.path.splitext(file)
+            if ext == '.raw':
+                rawfiles += [os.path.normpath(os.path.join(dirpath,file))]
     return rawfiles
 
 def check_file_sequence(filename):
@@ -24,20 +24,16 @@ def check_file_sequence(filename):
 
 def convert_mzxmls(dirpath):
     rawfiles = find_raws(dirpath)
-    prev_dir = os.getcwd()
-    os.chdir(dirpath)
-    mkdir_if_not(dirpath + "/qc/mzxml")
-    error_files = []
     for file in rawfiles:
-        method = check_file_sequence(file)
-        if method == "error":
-            error_files += [file]
-        else:
-            mkdir_if_not(f"{dirpath}/qc/mzxml/{method}")
-            command = f'{config["msconvert_path"]} {file} -o ./qc/mzxml/{method} --64 --zlib --mzXML --filter "peakPicking true 1-"'
-            subprocess.run(command)
-    os.chdir(prev_dir)
-    return error_files
+        convert_mzxml(file)
+
+def convert_mzxml(filepath):
+    file_dir, file_name = os.path.split(filepath)
+    mkdir_if_not(file_dir + "/qc/mzxml")
+    method = check_file_sequence(file_name)
+    mkdir_if_not(f"{file_dir}/qc/mzxml/{method}")
+    command = f'{config["msconvert_path"]} {filepath} -o {file_dir}/qc/mzxml/{method} --64 --zlib --mzXML --filter "peakPicking true 1-"'
+    subprocess.run(command)
 
 def get_runtimes(qc):
     timestamps = {}
