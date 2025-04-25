@@ -17,7 +17,7 @@ def check_directories_on_start():
     plate_log = json.load(open(plate_log_path))
     directories = next(os.walk(watch_directory))[1]
     for directory in directories:
-        directory = os.path.abspath(directory)
+        directory = os.path.normpath(os.path.join(watch_directory,directory))
         if directory in plate_log["directories_analyzed"]:
             pass
         elif directory in plate_log["new_directories"]:
@@ -28,7 +28,6 @@ def check_directories_on_start():
 
 def check_raw_queue():
     plate_log = json.load(open(plate_log_path))
-    print(f"Raw Queue: {plate_log["raw_queue"]}")
     for i in range(len(plate_log["raw_queue"])-1, -1, -1):
         file = plate_log["raw_queue"][i]
         time_since_create = time.time() - os.path.getctime(file)
@@ -66,7 +65,6 @@ class New_Dir_Handler(FileSystemEventHandler):
             print(os.path.abspath(event.src_path))
             plate_log["new_directories"] += [os.path.abspath(event.src_path)]
             print(f"New directory detected: {os.path.abspath(event.src_path)}")
-            mkdir_if_not(os.path.abspath(event.src_path) + "/qc")
             json.dump(plate_log, open(plate_log_path, 'w'), indent=4)
 
 # class Finished_Positive_Controls_Handler(FileSystemEventHandler):
@@ -85,6 +83,7 @@ class New_Raw_Handler(FileSystemEventHandler):
         if event.is_directory:
             pass
         else:
+            mkdir_if_not(os.path.abspath(os.path.split(event.src_path)[0]) + "/qc")
             print("New file detected.")
             file_dir, file_name = os.path.split(os.path.abspath(event.src_path))
             plate_log = json.load(open(plate_log_path))

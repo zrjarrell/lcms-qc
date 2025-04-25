@@ -1,5 +1,5 @@
 {
-    "watch_directory": "C:/Users/zjarrel/repos/lcms-qc",
+    "watch_directory": "F:/",
     "msconvert_path": "C:/Program Files/ProteoWizard/ProteoWizard 3.0.21251.b9cd7e65/msconvert.exe",
     "num_replicates": 3,
     "mzxml_sampling_num": 20,
