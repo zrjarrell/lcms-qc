@@ -84,7 +84,7 @@ class QCResult:
         self.target_stats["max_rt_error"] = max(observed_matches["time.error"])
     
     def get_replicability(self):
-        self.replicability = check_replicability(self)
+        self.replicability = check_replicability(self) #
 
     def get_eics(self):
         build_eics(self)

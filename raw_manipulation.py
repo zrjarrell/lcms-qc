@@ -1,5 +1,5 @@
 import os, json, subprocess, time
-from utilities import mkdir_if_not
+from utilities import mkdir_if_not, check_file_sequence
 
 config = json.load(open("config.json"))
 
@@ -12,16 +12,6 @@ def find_raws(dirpath):
                 rawfiles += [os.path.normpath(os.path.join(dirpath,file))]
     return rawfiles
 
-def check_file_sequence(filename):
-    try:
-        file_num = int(filename[-5])
-        if file_num % 2 == 1:
-            return "hilicpos"
-        else:
-            return "c18neg"
-    except:
-        return "error"
-
 def convert_mzxmls(dirpath):
     rawfiles = find_raws(dirpath)
     for file in rawfiles:
@@ -29,6 +19,7 @@ def convert_mzxmls(dirpath):
 
 def convert_mzxml(filepath):
     file_dir, file_name = os.path.split(filepath)
+    mkdir_if_not(file_dir + "/qc")
     mkdir_if_not(file_dir + "/qc/mzxml")
     method = check_file_sequence(file_name)
     mkdir_if_not(f"{file_dir}/qc/mzxml/{method}")

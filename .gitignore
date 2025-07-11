@@ -1,5 +1,4 @@
 **/.git
 **/__pycache__
-**/Chunyus-script_release0.6.3
-**/example_collins-qc
-**/test-raws
+**/db
+**/db_test

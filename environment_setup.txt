@@ -9,11 +9,13 @@ conda install -c conda-forge r-base=4.4.3
         install.packages("BiocManager")
 
     BiocManager::install("xcms")
+    
     BiocManager::install("rawrr")
+    rawrr::installRawFileReaderDLLs()
+    rawrr::installRawrrExe()
 
 
 pip install pandas
-
 pip install reportlab
 pip install pypdf
 pip install watchdog

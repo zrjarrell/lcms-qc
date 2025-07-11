@@ -1,139 +1,277 @@
 {
-    "watch_directory": "F:/",
-    "msconvert_path": "C:/Program Files/ProteoWizard/ProteoWizard 3.0.21251.b9cd7e65/msconvert.exe",
+    "watch_directory": "D:/IndiPharm_plates",
+    "msconvert_path": "C:/Program Files/ProteoWizard/ProteoWizard 3.0.25090.3839e4d/msconvert.exe",
     "num_replicates": 3,
     "mzxml_sampling_num": 20,
     "target_matching": {
         "mass_error_ppm": 5,
         "rt_error_seconds": 30
-    },    
-    "hilicpos_targets": [
-        {
-            "name": "[trimethyl-13C3]-caffeine",
-            "mz": 198.0977,
-            "time": 31,
-            "type": "istd"
-        },
-        {
-            "name": "[3,3-13C2]-cystine",
-            "mz": 243.0378,
-            "time": 194,
-            "type": "istd"
-        },
-        {
-            "name": "[13C6]-D-glucose",
-            "mz": 209.0727,
-            "time": 42,
-            "type": "istd"
-        },
-        {
-            "name": "[15N,13C5]-L-methionine",
-            "mz": 156.0721,
-            "time": 50,
-            "type": "istd"
-        },
-        {
-            "name": "[15N]-L-tyrosine",
-            "mz": 183.0782,
-            "time": 52,
-            "type": "istd"
-        },
-        {
-            "name": "Phenylalanine",
-            "mz": 166.0863,
-            "time": 42,
-            "type": "metabolite"
-        },
-        {
-            "name": "Cotinine",
-            "mz": 177.1022,
-            "time": 34,
-            "type": "metabolite"
-        },
-        {
-            "name": "Carnitine",
-            "mz": 162.1125,
-            "time": 50,
-            "type": "metabolite"
-        },
-        {
-            "name": "Palmitoylcarnitine",
-            "mz": 400.3421,
-            "time": 24.6,
-            "type": "metabolite"
-        },
-        {
-            "name": "Sphingosine 1-phosphate",
-            "mz": 380.2551,
-            "time": 32,
-            "type": "metabolite"
-        }
-    ],
-    "c18neg_targets": [
-        {
-            "name": "[U-13C5, U-15N2]-L-glutamine",
-            "mz": 152.0727,
-            "time": 21,
-            "type": "istd"
-        },
-        {
-            "name": "[3,3-13C2]-cystine",
-            "mz": 241.0232,
-            "time": 20,
-            "type": "istd"
-        },
-        {
-            "name": "[13C6]-D-glucose",
-            "mz": 185.0762,
-            "time": 24,
-            "type": "istd"
-        },
-        {
-            "name": "[15N,13C5]-L-methionine",
-            "mz": 154.0576,
-            "time": 24,
-            "type": "istd"
-        },
-        {
-            "name": "[15N]-L-tyrosine",
-            "mz": 181.0636,
-            "time": 24,
-            "type": "istd"
-        },
-        {
-            "name": "Linoleic acid",
-            "mz": 279.2330,
-            "time": 244,
-            "type": "metabolite"
-        },
-        {
-            "name": "Palmitic acid",
-            "mz": 255.2329,
-            "time": 263,
-            "type": "metabolite"
-        },
-        {
-            "name": "Lactate",
-            "mz": 89.0244,
-            "time": 23,
-            "type": "metabolite"
-        },
-        {
-            "name": "Progesterone",
-            "mz": 311.2011,
-            "time": 25,
-            "type": "metabolite"
-        },
-        {
-            "name": "Uric acid",
-            "mz": 167.0211,
-            "time": 19,
-            "type": "metabolite"
-        }
-    ],
+    },
+    "internalStd_targets": {
+        "hilicpos": [
+            {
+                "num": 1,
+                "name": "[trimethyl-13C3]-caffeine",
+                "mz": 198.0977,
+                "time": 60,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 2,
+                "name": "[15N]-L-tyrosine",
+                "mz": 183.0782,
+                "time": 188,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 3,
+                "name": "[13C5]-L-glutamic acid",
+                "mz": 153.077,
+                "time": 205,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 4,
+                "name": "[3,3-13C2]-cystine",
+                "mz": 243.0377,
+                "time": 232,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 5,
+                "name": "[13C3]-nicotine",
+                "mz": 166.1329,
+                "time": 120,
+                "adduct": "M+H",
+                "check": "True"
+            }
+        ],
+        "c18neg": [
+            {
+                "num": 6,
+                "name": "[15N,13C5]-L-methionine",
+                "mz": 154.0572,
+                "time": 54,
+                "adduct": "M-H",
+                "check": "True"
+            },
+            {
+                "num": 7,
+                "name": "[15N]-L-tyrosine",
+                "mz": 181.0636,
+                "time": 55,
+                "adduct": "M-H",
+                "check": "True"
+            },
+            {
+                "num": 8,
+                "name": "[13C5]-L-glutamic acid",
+                "mz": 151.0624,
+                "time": 43,
+                "adduct": "M-H",
+                "check": "True"
+            },
+            {
+                "num": 9,
+                "name": "[13C6]-D-glucose",
+                "mz": 185.0759,
+                "time": 47,
+                "adduct": "M-H",
+                "check": "True"
+            },
+            {
+                "num": 10,
+                "name": "[3,3-13C2]-cystine",
+                "mz": 241.0231,
+                "time": 45,
+                "adduct": "M-H",
+                "check": "True"
+            },
+            {
+                "num": 11,
+                "name": "[U-13C]-linoleic acid",
+                "mz": 297.2923,
+                "time": 212,
+                "adduct": "M-H",
+                "check": "True"
+            }
+        ]
+    },
+    "positiveControl_targets": {
+        "hilicpos": [
+            {
+                "num": 1,
+                "name": "procainamide",
+                "mz": 236.1757,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 2,
+                "name": "acetylation of procainamide",
+                "mz": 294.1812,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 3,
+                "name": "histamine",
+                "mz": 112.0869,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 4,
+                "name": "methylation of histamine",
+                "mz": 126.1026,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 5,
+                "name": "omeprazole",
+                "mz": 346.122,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 6,
+                "name": "oxidation of omeprazole",
+                "mz": 362.1169,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 7,
+                "name": "glucuronidation of omeprazole",
+                "mz": 522.1541,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 8,
+                "name": "L-methyldopa",
+                "mz": 212.0918,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 9,
+                "name": "cyclophosphamide**",
+                "mz": 152.0706,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 10,
+                "name": "glutathionylation of cyclophosphamide**",
+                "mz": 328.1027,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            }
+        ],
+        "c18neg": [
+            {
+                "num": 11,
+                "name": "procainamide",
+                "mz": 234.1611,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 12,
+                "name": "acetylation of procainamide",
+                "mz": 292.1666,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 13,
+                "name": "histamine",
+                "mz": 110.0723,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 14,
+                "name": "methylation of histamine",
+                "mz": 124.088,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 15,
+                "name": "omeprazole",
+                "mz": 344.1074,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 16,
+                "name": "oxidation of omeprazole",
+                "mz": 360.1023,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 17,
+                "name": "glucuronidation of omeprazole",
+                "mz": 520.1395,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 18,
+                "name": "L-methyldopa",
+                "mz": 210.0772,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 19,
+                "name": "cyclophosphamide**",
+                "mz": 150.056,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            },
+            {
+                "num": 20,
+                "name": "glutathionylation of cyclophosphamide**",
+                "mz": 326.0881,
+                "time": 150,
+                "adduct": "M+H",
+                "check": "True"
+            }
+        ]
+    },
+    "targets_lastUpdate": 1752267210.3121896,
     "qc_thresholds": {
         "mass_error_thresh": 5,
         "rt_error_thresh": 30,
+        "posCtrl_rt_error_thresh": 150,
         "med_cv_thresh": 0.3,
         "mean_corr_thresh": 0.7
     }
