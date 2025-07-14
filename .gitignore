@@ -2,3 +2,5 @@
 **/__pycache__
 **/db
 **/db_test
+
+email_config.json
