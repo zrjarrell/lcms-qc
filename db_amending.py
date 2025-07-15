@@ -10,7 +10,7 @@ def append_target(cur, target, mode, table = "intStdTargets"):
         label = "pos"
     else:
         label = "endo"
-    insert_query = f"INSERT INTO {table} (id, chemical_name, mode, ref_mz, ref_time, adduct) VALUES (?, ?, ?, ?, ?, ?)"
+    insert_query = f"INSERT INTO {table} (id, chemical_name, analytical_mode, ref_mz, ref_time, adduct) VALUES (?, ?, ?, ?, ?, ?)"
     data_tuple = (db_labeler(label, target["num"]), target["name"], mode, target["mz"], target["time"], target["adduct"])
     cur.execute(insert_query, data_tuple)
 
@@ -20,7 +20,7 @@ def append_experiment(cur, experimentID, path):
     cur.execute(insert_query, data_tuple)
 
 def append_sampleQC(cur, sampleID, experimentID, path, file_type, scans, tic):
-    insert_query = f"INSERT INTO sampleQC (id, experimentID, file_name, sample_type, mode, scans, tic, create_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    insert_query = f"INSERT INTO sampleQC (id, experimentID, file_name, sample_type, analytical_mode, scans, tic, create_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     data_tuple = (sampleID, experimentID, basename(path), file_type, check_file_sequence(path), scans, tic, getctime(path))
     cur.execute(insert_query, data_tuple)
 
@@ -43,7 +43,7 @@ def append_matches(cur, sampleID, match_table: DataFrame):
 def append_experimentQC(cur, experimentID, qstd_qc):
     for mode in qstd_qc:
         for qstd in qstd_qc[mode]["qc"]["sample_replicability"]:
-            insert_query = f"INSERT INTO experimentQC (experimentID, qstd_num, mode, num_peaks, num_peaks_2_reps, num_peaks_3_reps, pairwiseR_1, pairwiseR_2, pairwiseR_3, featureCV_q0, featureCV_q1, featureCV_q2, featureCV_q3, featureCV_q4, eic_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            insert_query = f"INSERT INTO experimentQC (experimentID, qstd_num, analytical_mode, num_peaks, num_peaks_2_reps, num_peaks_3_reps, pairwiseR_1, pairwiseR_2, pairwiseR_3, featureCV_q0, featureCV_q1, featureCV_q2, featureCV_q3, featureCV_q4, eic_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             data_tuple = (experimentID, qstd, mode, qstd_qc[mode]["qc"]["peak_numbers"][qstd][0], qstd_qc[mode]["qc"]["peak_numbers"][qstd][1], qstd_qc[mode]["qc"]["peak_numbers"][qstd][2],
                           qstd_qc[mode]["qc"]["sample_replicability"][qstd][0], qstd_qc[mode]["qc"]["sample_replicability"][qstd][1], qstd_qc[mode]["qc"]["sample_replicability"][qstd][2],
                           qstd_qc[mode]["qc"]["feature_replicability"][qstd][0], qstd_qc[mode]["qc"]["feature_replicability"][qstd][1], qstd_qc[mode]["qc"]["feature_replicability"][qstd][2],

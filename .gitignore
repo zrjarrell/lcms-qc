@@ -3,4 +3,5 @@
 **/db
 **/db_test
 
-email_config.json
+monitoring_config.json
+monitor-testing.py
