@@ -65,7 +65,7 @@ reset_config()
 
 while True:
     try:
-        time.sleep(3)
+        time.sleep(300)
         should_check, last_entry, last_file = should_check_qc()
         mode = check_file_sequence(last_file)
         if should_check:
