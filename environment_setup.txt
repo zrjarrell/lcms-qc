@@ -19,3 +19,7 @@ pip install pandas
 pip install reportlab
 pip install pypdf
 pip install watchdog
+
+
+#only needed for temporary excel pull for qc:
+pip install openpyxl
